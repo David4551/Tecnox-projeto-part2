@@ -5,7 +5,8 @@ import Footer from '../../components/footer/index.jsx';
 import ProductsCarousel from '../../components/Carrosel/carrosel.jsx';
 import './index.css';
 
-const products = [
+// --- Dados de Produtos Movidos para fora do componente ---
+const FEATURED_PRODUCTS = [
     { id: 1, name: 'Akko Tac75 HE Magnetico', price: 'R$503,99', imgSrc: '/images-home/TacHE75.png' },
     { id: 2, name: 'Akko MonsGeek FUN60', price: 'R$367,47', imgSrc: '/images-home/Moonsgeek6.png' },
     { id: 3, name: 'AJAZZ AK820 Mecanico', price: 'R$381,08', imgSrc: '/images-home/AjazzK.png' },
@@ -21,19 +22,17 @@ const products = [
 ];
 
 const Home = () => {
-
-  
     return (
         <>
             <Header />
-            {/* Usamos 'page-wrapper' para definir o fundo branco padrão */}
+            {/* O conteúdo da página fica dentro da tag <main> */}
             <main className="page-wrapper">
-                {/* Seção Hero Principal (Fundo preto full-width) */}
+                
+                {/* --- 1. SEÇÃO HERO PRINCIPAL (RTX 5090) --- */}
                 <section className="hero-section hero-main">
-                    <div className="section-container"> {/* Container centralizado */}
+                    <div className="section-container">
                         <div className="hero-content">
-                            <h1>PLaca de video <br /> RTX 5090</h1>
-                            {/* CTA leva para a listagem de Smartwatches */}
+                            <h1>Placa de vídeo <br /> RTX 5090</h1>
                             <Link to="/" className="cta-button" style={{ textDecoration: 'none' }}>Compre agora</Link>
                         </div>
                         <div className="hero-image1">
@@ -42,21 +41,21 @@ const Home = () => {
                     </div>
                 </section>
 
-                {/* Seção de Produtos (Fundo branco full-width) */}
+                {/* --- 2. SEÇÃO DE PRODUTOS EM DESTAQUE (CARROSSEL) --- */}
                 <section className="products-section">
-                    <div className="section-container"> {/* Container centralizado */}
+                    <div className="section-container">
                         <h2>Principais escolhas dos clientes</h2>
-                        <p>Encontre o periferico ideal para seu computador com nossa seleção dos modelos mais vendidos.</p>
-                        <ProductsCarousel products={products} />
-
+                        <p>Encontre o periférico ideal para seu computador com nossa seleção dos modelos mais vendidos.</p>
+                        {/* Passa os dados para o componente Carrossel */}
+                        <ProductsCarousel products={FEATURED_PRODUCTS} />
                     </div>
                 </section>
 
-                {/* Seção de Novidade (Fundo preto full-width) */}
+                {/* --- 3. SEÇÃO HERO SECUNDÁRIA (ROG OLED) --- */}
                 <section className="hero-section hero-secondary">
-                    <div className="section-container"> {/* Container centralizado */}
+                    <div className="section-container">
                         <div className="hero-image">
-                            <img src="/images-home/asus.png" alt="Novidade Watch 10 Ultra" />
+                            <img src="/images-home/asus.png" alt="Novidade ROG Swift OLED" />
                         </div>
                         <div className="hero-content">
                             <p className="subtitle">Novidade</p>
@@ -66,6 +65,7 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
+
             </main>
             <Footer />
         </>

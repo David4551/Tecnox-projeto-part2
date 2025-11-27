@@ -57,5 +57,5 @@ export const CONFIG = {
  */
 export const API_BASE_URL = (
   (import.meta.env && import.meta.env.VITE_API_URL && String(import.meta.env.VITE_API_URL).trim()) ||
-  (import.meta.env && import.meta.env.DEV ? 'http://localhost:3001' : '')
+  (import.meta.env && import.meta.env.DEV ? 'http://localhost:5000' : '')
 )

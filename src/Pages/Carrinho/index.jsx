@@ -6,11 +6,13 @@ import Footer from '../../components/footer/index.jsx';
 import './index.css';
 import { getCart, updateQty, removeItem, setCheckoutItems, formatBRL } from '../../utils/cart.js';
 
-// --- Ícones e Componentes de Apresentação ---
+// Pessoal aqui estão os Ícones e Componentes de Apresentação 
 
-/**
- * Ícone de Lixeira (TrashIcon)
- */
+
+
+// Ícone de Lixeira
+
+
 const TrashIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="3 6 5 6 21 6"></polyline>
@@ -18,9 +20,8 @@ const TrashIcon = () => (
     </svg>
 );
 
-/**
- * Componente do Item Individual no Carrinho
- */
+// aqui é o componente do Item Individual no Carrinho, bele?
+
 const CartItem = React.memo(({ item, onQtyChange, onRemove }) => {
     const itemKey = `${item.type}-${item.id}`;
     const itemSubtotal = (item.price || 0) * (item.quantity || 1);
@@ -84,9 +85,10 @@ const CartSummary = ({ subtotal, itemsLength, onCheckout }) => (
     </div>
 );
 
-// --- Hook de Lógica Customizada ---
 
-//Hook customizado para gerenciar o estado e as ações do carrinho
+
+// o Hook customizado para gerenciar o estado e as ações do carrinho
+//  pesquisem se tiverem duvidas
 
 const useCartLogic = () => {
     const [items, setItems] = useState([]);
@@ -142,7 +144,7 @@ const useCartLogic = () => {
     };
 };
 
-// --- Componente Principal da Página ---
+// Componente Principal da Página 
 
 const CartPage = () => {
     // Usa o hook customizado para obter o estado e os handlers
