@@ -86,79 +86,102 @@ const CheckoutPage = () => {
                 <h1>Finalizar Pagamento</h1>
                 <div className="checkout-layout">
                     <form className="billing-details-form" onSubmit={(e)=>{ e.preventDefault(); placeOrder(); }}>
-                        <div className="form-row">
-                            <div className="form-group">
-                                <label htmlFor="firstName">Primeiro nome</label>
-                                <input type="text" id="firstName" value={form.firstName} onChange={handleChange} required className={errors.firstName ? 'input-error' : ''} aria-invalid={!!errors.firstName} />
-                                {errors.firstName && <div className="error-msg">{errors.firstName}</div>}
+                        {/* Dados pessoais */}
+                        <section className="checkout-section">
+                            <h2>Dados pessoais</h2>
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label htmlFor="firstName">Primeiro nome</label>
+                                    <input type="text" id="firstName" value={form.firstName} onChange={handleChange} required className={errors.firstName ? 'input-error' : ''} aria-invalid={!!errors.firstName} />
+                                    {errors.firstName && <div className="error-msg">{errors.firstName}</div>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="lastName">Último nome</label>
+                                    <input type="text" id="lastName" value={form.lastName} onChange={handleChange} required className={errors.lastName ? 'input-error' : ''} aria-invalid={!!errors.lastName} />
+                                    {errors.lastName && <div className="error-msg">{errors.lastName}</div>}
+                                </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="lastName">Último nome</label>
-                                <input type="text" id="lastName" value={form.lastName} onChange={handleChange} required className={errors.lastName ? 'input-error' : ''} aria-invalid={!!errors.lastName} />
-                                {errors.lastName && <div className="error-msg">{errors.lastName}</div>}
+                                <label htmlFor="companyName">Nome da Empresa (opcional)</label>
+                                <input type="text" id="companyName" value={form.companyName} onChange={handleChange} />
                             </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="companyName">Nome da Empresa (opcional)</label>
-                            <input type="text" id="companyName" value={form.companyName} onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="country">País / Região</label>
-                            <select id="country" value={form.country} onChange={handleChange} required className={errors.country ? 'input-error' : ''} aria-invalid={!!errors.country}>
-                                <option value="brasil">Brasil</option>
-                            </select>
-                            {errors.country && <div className="error-msg">{errors.country}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="address">Endereço</label>
-                            <input type="text" id="address" value={form.address} onChange={handleChange} required className={errors.address ? 'input-error' : ''} aria-invalid={!!errors.address} />
-                            {errors.address && <div className="error-msg">{errors.address}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="city">Cidade</label>
-                            <input type="text" id="city" value={form.city} onChange={handleChange} required className={errors.city ? 'input-error' : ''} aria-invalid={!!errors.city} />
-                            {errors.city && <div className="error-msg">{errors.city}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="district">Bairro / Região (Grande São Paulo)</label>
-                            <select id="district" value={form.district} onChange={handleChange} required className={errors.district ? 'input-error' : ''} aria-invalid={!!errors.district}>
-                                <option value="osasco">Osasco</option>
-                                <option value="sao-paulo-zona-norte">São Paulo - Zona Norte</option>
-                                <option value="sao-paulo-zona-sul">São Paulo - Zona Sul</option>
-                                <option value="sao-paulo-zona-leste">São Paulo - Zona Leste</option>
-                                <option value="sao-paulo-zona-oeste">São Paulo - Zona Oeste</option>
-                                <option value="santo-andre">Santo André</option>
-                                <option value="sao-bernardo-do-campo">São Bernardo do Campo</option>
-                                <option value="sao-caetano-do-sul">São Caetano do Sul</option>
-                                <option value="diadema">Diadema</option>
-                                <option value="guarulhos">Guarulhos</option>
-                                <option value="barueri">Barueri</option>
-                                <option value="carapicuiba">Carapicuíba</option>
-                                <option value="taboao-da-serra">Taboão da Serra</option>
-                                <option value="embu-das-artes">Embu das Artes</option>
-                                <option value="itapecerica-da-serra">Itapecerica da Serra</option>
-                            </select>
-                            {errors.district && <div className="error-msg">{errors.district}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="cep">CEP</label>
-                            <input type="text" id="cep" value={form.cep} onChange={handleChange} required placeholder="00000-000" className={errors.cep ? 'input-error' : ''} aria-invalid={!!errors.cep} />
-                            {errors.cep && <div className="error-msg">{errors.cep}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="contact">Contato</label>
-                            <input type="text" id="contact" value={form.contact} onChange={handleChange} required placeholder="(11) 90000-0000" className={errors.contact ? 'input-error' : ''} aria-invalid={!!errors.contact} />
-                            {errors.contact && <div className="error-msg">{errors.contact}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Endereço e-mail</label>
-                            <input type="email" id="email" value={form.email} onChange={handleChange} required className={errors.email ? 'input-error' : ''} aria-invalid={!!errors.email} />
-                            {errors.email && <div className="error-msg">{errors.email}</div>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="additionalInfo">Informações adicionais</label>
-                            <textarea id="additionalInfo" rows="4" value={form.additionalInfo} onChange={handleChange}></textarea>
-                        </div>
+                        </section>
+
+                        {/* Endereço */}
+                        <section className="checkout-section">
+                            <h2>Endereço</h2>
+                            <div className="form-group">
+                                <label htmlFor="country">País / Região</label>
+                                <select id="country" value={form.country} onChange={handleChange} required className={errors.country ? 'input-error' : ''} aria-invalid={!!errors.country}>
+                                    <option value="brasil">Brasil</option>
+                                </select>
+                                {errors.country && <div className="error-msg">{errors.country}</div>}
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="address">Endereço</label>
+                                <input type="text" id="address" value={form.address} onChange={handleChange} required className={errors.address ? 'input-error' : ''} aria-invalid={!!errors.address} />
+                                {errors.address && <div className="error-msg">{errors.address}</div>}
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label htmlFor="city">Cidade</label>
+                                    <input type="text" id="city" value={form.city} onChange={handleChange} required className={errors.city ? 'input-error' : ''} aria-invalid={!!errors.city} />
+                                    {errors.city && <div className="error-msg">{errors.city}</div>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="district">Bairro / Região (Grande São Paulo)</label>
+                                    <select id="district" value={form.district} onChange={handleChange} required className={errors.district ? 'input-error' : ''} aria-invalid={!!errors.district}>
+                                        <option value="osasco">Osasco</option>
+                                        <option value="sao-paulo-zona-norte">São Paulo - Zona Norte</option>
+                                        <option value="sao-paulo-zona-sul">São Paulo - Zona Sul</option>
+                                        <option value="sao-paulo-zona-leste">São Paulo - Zona Leste</option>
+                                        <option value="sao-paulo-zona-oeste">São Paulo - Zona Oeste</option>
+                                        <option value="santo-andre">Santo André</option>
+                                        <option value="sao-bernardo-do-campo">São Bernardo do Campo</option>
+                                        <option value="sao-caetano-do-sul">São Caetano do Sul</option>
+                                        <option value="diadema">Diadema</option>
+                                        <option value="guarulhos">Guarulhos</option>
+                                        <option value="barueri">Barueri</option>
+                                        <option value="carapicuiba">Carapicuíba</option>
+                                        <option value="taboao-da-serra">Taboão da Serra</option>
+                                        <option value="embu-das-artes">Embu das Artes</option>
+                                        <option value="itapecerica-da-serra">Itapecerica da Serra</option>
+                                    </select>
+                                    {errors.district && <div className="error-msg">{errors.district}</div>}
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="cep">CEP</label>
+                                <input type="text" id="cep" value={form.cep} onChange={handleChange} required placeholder="00000-000" className={errors.cep ? 'input-error' : ''} aria-invalid={!!errors.cep} />
+                                {errors.cep && <div className="error-msg">{errors.cep}</div>}
+                            </div>
+                        </section>
+
+                        {/* Contato */}
+                        <section className="checkout-section">
+                            <h2>Contato</h2>
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label htmlFor="contact">Contato</label>
+                                    <input type="text" id="contact" value={form.contact} onChange={handleChange} required placeholder="(11) 90000-0000" className={errors.contact ? 'input-error' : ''} aria-invalid={!!errors.contact} />
+                                    {errors.contact && <div className="error-msg">{errors.contact}</div>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="email">Endereço e-mail</label>
+                                    <input type="email" id="email" value={form.email} onChange={handleChange} required className={errors.email ? 'input-error' : ''} aria-invalid={!!errors.email} />
+                                    {errors.email && <div className="error-msg">{errors.email}</div>}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Informações adicionais */}
+                        <section className="checkout-section">
+                            <h2>Informações adicionais</h2>
+                            <div className="form-group">
+                                <label htmlFor="additionalInfo">Informações adicionais</label>
+                                <textarea id="additionalInfo" rows="4" value={form.additionalInfo} onChange={handleChange}></textarea>
+                            </div>
+                        </section>
                     </form>
 
                     <div className="order-summary">

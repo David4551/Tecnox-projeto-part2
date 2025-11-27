@@ -162,15 +162,8 @@ const CartPage = () => {
                 <h1>Seu Carrinho</h1>
                 <div className="cart-layout">
                     
-                    {/* Lista de Itens */}
+                    {/* Lista de Itens como cards empilhados */}
                     <div className="cart-items-section">
-                        <div className="cart-header">
-                            <span className="header-product">Produto</span>
-                            <span className="header-price">Preço</span>
-                            <span className="header-quantity">Quantidade</span>
-                            <span className="header-subtotal">Subtotal</span>
-                        </div>
-                        
                         {itemsLength === 0 ? (
                             <div className="cart-empty-message">
                                 <span>Seu carrinho está vazio.</span>
