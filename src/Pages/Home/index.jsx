@@ -5,7 +5,7 @@ import Footer from '../../components/footer/index.jsx';
 import ProductsCarousel from '../../components/Carrosel/carrosel.jsx';
 import './index.css';
 
-// --- Dados de Produtos Movidos para fora do componente ---
+//Dados de Produtos Movidos para fora do componente 
 const FEATURED_PRODUCTS = [
     { id: 1, name: 'Akko Tac75 HE Magnetico', price: 'R$503,99', imgSrc: '/images-home/TacHE75.png' },
     { id: 2, name: 'Akko MonsGeek FUN60', price: 'R$367,47', imgSrc: '/images-home/Moonsgeek6.png' },
